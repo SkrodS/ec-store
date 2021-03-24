@@ -9,12 +9,6 @@ module.exports = (mon) => {
 
     let Test = mon.model("Test", testSchema);
 
-    Test.create({
-        text: "tjena",
-        number: 2397,
-        date: new Date(),
-    });
-
     console.log(Test)
 
     Test.findOne({text: "tjena"});

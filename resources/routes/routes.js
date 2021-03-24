@@ -1,8 +1,4 @@
-module.exports = (app) => {
-    app.get("/", (req, res) => {
-        res.send();
-    });
-    
+module.exports = (app) => { 
     app.listen(3000, (err) => {
         if (!err) {
             console.log("Connected");
@@ -11,4 +7,9 @@ module.exports = (app) => {
             console.log(err);
         };
     });
+
+    require("./delete-routes.js");
+    require("./get-routes.js")(app);
+    require("./post-routes.js");
+    require("./put-routes.js");
 };
