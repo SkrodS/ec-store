@@ -1,1 +1,27 @@
 sitemap= https://www.gloomaps.com/rFaa4nAEVn
+homescreen wireframe= https://www.gloomaps.com/rFaa4nAEVn
+
+Tankar om back-end:
+    Cookie:
+        session-id: string
+        cart-items: array
+        giltig i 2 timmar: date
+        admin-key: string
+        
+    produkt:
+        object-id: string
+        namn: string
+        beskrivning: string
+        länk till bild: string
+        storlek: string
+        lagersaldo (kanske): int
+        färg (kanske): string
+    admin:
+        object-id: string
+        username: string
+        password: string
+        admin-key: string
+
+När man loggar in som admin så genereras en admin-key som placeras i cookie:n och sparas i admin-användaren i databasen. 
+När man loggar ut som admin så raderas admin-key från cookie:n och databasen. 
+Om man har en giltig admin-key i cookie:n så har man åtkomst att lägga till, radera och editera produkter.
