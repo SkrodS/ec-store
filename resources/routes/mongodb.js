@@ -1,15 +1,40 @@
 module.exports = (mon) => {
-    mon.connect("mongodb://localhost:27017/test", { useNewUrlParser: true, useUnifiedTopology: true });
+    mon.connect(process.env.DBPATH, { useNewUrlParser: true, useUnifiedTopology: true });
 
-    const testSchema = new mon.Schema({
-        text: String,
-        number: Number,
-        date: Date,
+    const productSchema = new mon.Schema({
+        name: String,
+        description: String,
+        image: String,
+        size: String,
     });
 
-    let Test = mon.model("Test", testSchema);
+    let Product = mon.model("Product", productSchema);
 
-    console.log(Test)
 
-    Test.findOne({text: "tjena"});
+    const adminSchema = new mon.Schema({
+        username: String,
+        password: String,
+        adminKey: String,
+    });
+
+    let Admin = mon.model("Admin", adminSchema);
+
+
+    const orderSchema = new mon.Schema({
+        firstname: String,
+        lastname: String,
+        address: String,
+        zipCode: Number,
+        city: String,
+        cartItems: Array,
+    });
+
+    let Order = mon.model("Order", orderSchema);
+
+    // Product.create({
+    //     name: "Hoodie",
+    //     description: "test",
+    //     image: "tototo",
+    //     size: "medium",
+    // })
 };

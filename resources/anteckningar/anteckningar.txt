@@ -21,6 +21,12 @@ Tankar om back-end:
         username: string
         password: string
         admin-key: string
+    order:
+        object-id: string
+        förnamn: string
+        efternamn: string
+        adress: string
+        cart-items: array
 
 När man loggar in som admin så genereras en admin-key som placeras i cookie:n och sparas i admin-användaren i databasen. 
 När man loggar ut som admin så raderas admin-key från cookie:n och databasen. 

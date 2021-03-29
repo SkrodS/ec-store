@@ -1,5 +1,6 @@
 const exp = require("express");
 const mon = require("mongoose");
+require("dotenv").config();
 const app = exp();
 
 app.set("view engine", "ejs");
