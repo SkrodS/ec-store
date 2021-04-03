@@ -9,22 +9,29 @@
     <title></title>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="50" height="50" class="d-inline-block align-text-top">
         </a>
-        <form class="container">
-          <div class="dropdown">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Some Category</a></li>
-            </ul>
-          </div>       
-          <button class="btn btn-outline-secondary">All products</button>
-        </form>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navBar">
+          <div class="container text-center">
+            <div class="dropdown btn-group">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Some Category</a></li>
+              </ul>
+            </div> 
+            <button class="btn btn-outline-secondary">All products</button>
+          </div> 
+        </div>     
       </div>
     </nav>
   </body>
