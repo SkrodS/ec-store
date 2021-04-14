@@ -1,0 +1,14 @@
+#test {
+    margin-right: 0.625rem;
+}
+
+@media screen and (max-width: 36rem) {
+    #test {
+        margin-bottom: 0.625rem;
+        margin-top: 0.625rem;
+    }
+    
+    .nav {
+        text-align: center
+    }
+}
