@@ -1,4 +1,4 @@
-module.exports = (app) => { 
+module.exports = (app, mon, bcrypt) => { 
     app.listen(process.env.PORT, (err) => {
         if (!err) {
             console.log("Connected");

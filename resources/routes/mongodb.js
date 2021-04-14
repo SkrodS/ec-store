@@ -1,4 +1,4 @@
-module.exports = (mon) => {
+module.exports = (mon, bcrypt) => {
     mon.connect(process.env.DBPATH, { useNewUrlParser: true, useUnifiedTopology: true });
 
     const productSchema = new mon.Schema({
@@ -32,9 +32,24 @@ module.exports = (mon) => {
     let Order = mon.model("Order", orderSchema);
 
     // Product.create({
-    //     name: "Hoodie",
-    //     description: "test",
-    //     image: "tototo",
+    //     name: "Gray logo",
+    //     description: "A gray hoodie with the normal EC Logo",
+    //     image: "tototow",
     //     size: "medium",
     // })
+    
+    // Admin.create({
+    //     username: "robinwidjebackadmin",
+    //     password: bcrypt.hashSync("robinadmin", 10),
+    //     adminKey: "test",
+    // });
+
+    // Order.create({
+    //     firstname: "Bob",
+    //     lastname: "Stensson",
+    //     address: "Spelvägen 19",
+    //     zipCode: 66330,
+    //     city: "Skoghall",
+    //     cartItems: [],
+    // });
 };
