@@ -7,6 +7,18 @@ body {
     margin-right: 0.625rem;
 }
 
+.carousel .item {
+    height: 350px;
+  }
+  
+  .item img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: 350px;
+      min-width: 1080px
+  }
+
 @media screen and (max-width: 36rem) {
     #test {
         margin-bottom: 0.625rem;
