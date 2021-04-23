@@ -25,6 +25,7 @@
 
   </head>
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <a class="navbar-brand" href="/">
         <img src="/img/EC_Clique_Logo.png" alt="" width="48" class="d-inline-block align-text-top" id="logo"></a>
@@ -60,6 +61,7 @@
       </div>
     </nav>
 
+    <!-- Carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -87,43 +89,36 @@
       </a>
     </div>
 
+    <!-- Content -->
     <h1 class="text-center mt-5">Popular products</h1>
     <hr width="500">
     <br>
     <div class="container"> 
       <div class="row">
-        <div class="col ml-auto mr-1">
-          <div class="card">
-            <a href="">
-              <img class="card-img-top" src="/img/gray.jpg" alt="">
-            </a>
-            <div class="card-body">
-              <h5 class="card-title mb-0 font-weight-bold">Gray EC Hoodie
-                <div class="btn-group">
-                  <a href="#" class="btn btn-light"><i class="far fa-eye"></i> View</a>
-                  <a href="#" class="btn btn-light"><i class="fas fa-shopping-bag"></i> Quick buy</a>
-                </div>
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div class="col mr-auto ml-1">
-          <div class="card">
-            <a href="">
-              <img class="card-img-top" src="/img/red.jpg" alt="">
-            </a>
-              <div class="card-body">
-                <h5 class="card-title mb-0 font-weight-bold">Red EC Hoodie
+        <% popular.forEach(popular => { %>
+          <div class="col mx-auto">
+            <div class="card">
+              <a href="/product/<%= popular._id %>">
+                <img class="card-img-top" src="<%= popular.image %>" alt="">
+                <div class="card-body">
+                  <h5 class="card-title mb-2 font-weight-bold text-dark"><%= popular.name %></h5>
                   <div class="btn-group">
-                    <a href="#" class="btn btn-light"><i class="far fa-eye"></i> View</a>
+                    <a href="/product/<%= popular._id %>"" class="btn btn-light"><i class="far fa-eye"></i> View</a>
                     <a href="#" class="btn btn-light"><i class="fas fa-shopping-bag"></i> Quick buy</a>
                   </div>
                 </h5>
               </div>
+            </div>
           </div>
-        </div>
+        </a>
+        <% }); %>
       </div>
     </div>
     <br>
+
+    <!-- Footer -->
+    <div class="position-sticky text-center my-5">
+      <p>Made by: <a id="color" href="http://www.github.com/SkrodS">Robin Widjeback</a></p>
+    </div>
   </body>
 </html>

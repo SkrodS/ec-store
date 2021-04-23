@@ -1,11 +1,11 @@
-module.exports = (mon, bcrypt) => {
+module.exports = (app, mon, bcrypt) => {
     mon.connect(process.env.DBPATH, { useNewUrlParser: true, useUnifiedTopology: true });
 
     const productSchema = new mon.Schema({
         name: String,
         description: String,
         image: String,
-        size: String,
+        popular: Boolean,
     });
 
     let Product = mon.model("Product", productSchema);
@@ -26,18 +26,34 @@ module.exports = (mon, bcrypt) => {
         address: String,
         zipCode: Number,
         city: String,
-        cartItems: Array,
+        cartItems: Object,
     });
 
     let Order = mon.model("Order", orderSchema);
 
+    require("./get-routes.js")(app, Product, Admin, Order);
+
     // Product.create({
-    //     name: "Gray logo",
-    //     description: "A gray hoodie with the normal EC Logo",
-    //     image: "tototow",
-    //     size: "medium",
-    // })
+    //     name: "T-shirt by Jen",
+    //     description: "A white T-shirt designed by Jen.",
+    //     image: "/img/jen-tshirt.jpg",
+    //     popular: false,
+    // });
     
+    // Product.create({
+    //     name: "T-shirt by Vilma",
+    //     description: "A white T-shirt designed by Vilma.",
+    //     image: "/img/vilma-tshirt.jpg",
+    //     popular: false,
+    // });
+
+    // Product.create({
+    //     name: "T-shirt by Stina",
+    //     description: "A white T-shirt designed by Stina.",
+    //     image: "/img/stina-tshirt.jpg",
+    //     popular: false,
+    // });
+
     // Admin.create({
     //     username: "robinwidjebackadmin",
     //     password: bcrypt.hashSync("robinadmin", 10),

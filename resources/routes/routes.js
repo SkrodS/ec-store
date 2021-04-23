@@ -9,7 +9,6 @@ module.exports = (app, mon, bcrypt) => {
     });
 
     require("./delete-routes.js");
-    require("./get-routes.js")(app);
     require("./post-routes.js");
     require("./put-routes.js");
 };

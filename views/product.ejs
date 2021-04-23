@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    
     <!-- Min CSS -->
-    <link rel="stylesheet" href="/css/all-products.css">
+    <link rel="stylesheet" href="/css/product.css">
 
     <title>EC Store</title>
 
@@ -63,34 +63,32 @@
         <br>
 
         <!-- Content -->
-        <h1 class="text-center">All products</h1>
-        <hr width="500">
-        <br>
-        <div class="container">
+        <div class="container mx-auto">
             <div class="row mx-auto">
-                <% product.forEach(product => { %>
-                    <div class="col-md-4 mb-4">
-                        <a href="/product/<%= product._id %>">
-                        <div class="card">
-                            <img class="card-img-top" src="<%= product.image %>" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title mb-2 font-weight-bold text-dark"><%= product.name %></h5>
-                                    <div class="btn-group">
-                                        <a href="/product/<%= product._id %>"" class="btn btn-light"><i class="far fa-eye"></i> View</a>
-                                        <a href="#" class="btn btn-light"><i class="fas fa-shopping-bag"></i> Quick buy</a>
-                                    </div>
-                                </h5>
-                            </div>
-                        </div>
-                        </a>
+                <div class="col p-0 mr-2">
+                    <img class="img-fluid rounded" src="<%= product.image %>" alt="" width="600">
+                </div> 
+                <div class="col ml-2">
+                    <h1 class="mt-1"><%= product.name %></h1>
+                    <hr class=" ml-0" width="150">
+                    <p class=""><%= product.description %></p>
+                    <hr class=" ml-0" width="150">
+                    <div class="form-group">
+                        <select class="form-control mr-4 mt-5">
+                            <option>Small</option>
+                            <option>Medium</option>
+                            <option>Large</option>
+                            <option>XL</option>
+                        </select>
+                        <input class="form-control mt-3" type="number" value="1">
                     </div>
-                <% }); %>
+                    <a class="btn btn-outline-warning p-3"><i class="fas fa-shopping-bag fa-lg"></i> Add to shopping bag</a>
+                </div>
             </div>
         </div>
-        <br>
 
         <!-- Footer -->
-        <div class="position-sticky text-center my-5">
+        <div class="fixed-bottom text-center my-5">
             <p>Made by: <a id="color" href="http://www.github.com/SkrodS">Robin Widjeback</a></p>
         </div>
     </body>
