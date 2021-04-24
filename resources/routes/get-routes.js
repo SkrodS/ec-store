@@ -1,4 +1,6 @@
-module.exports = (app, Product, Admin, Order) => {
+module.exports = (app, models) => {
+
+    //START PAGE
     app.get("/", (req, res) => {
         Product.find({popular: true},[], (err, popular) => {
             if (err) {
@@ -10,6 +12,7 @@ module.exports = (app, Product, Admin, Order) => {
         });
     });
 
+    //ALL PRODUCTS PAGE
     app.get("/all-products", (req, res) => {
         Product.find({}, [], (err, product) => {
             if (err) {
@@ -21,6 +24,7 @@ module.exports = (app, Product, Admin, Order) => {
         });
     });
 
+    //HOODIES PAGE
     app.get("/all-products/hoodies", (req, res) => {
         Product.find({"name" : {$regex : ".*Hoodie.*"}}, [], (err, product) => {
             if (err) {
@@ -32,6 +36,7 @@ module.exports = (app, Product, Admin, Order) => {
         });
     });
 
+    //T-SHIRTS PAGE
     app.get("/all-products/t-shirts", (req, res) => {
         Product.find({"name" : {$regex : ".*T-shirt.*"}}, [], (err, product) => {
             if (err) {
@@ -43,6 +48,7 @@ module.exports = (app, Product, Admin, Order) => {
         });
     });
 
+    //PRODUCT PAGE
     app.get("/product/:id", (req, res) => {
         Product.findById(req.params.id, (err, product) => {
             if (err) {
