@@ -50,6 +50,8 @@ module.exports = (app) => {
 
     //PRODUCT PAGE
     app.get("/product/:id", (req, res) => {
+        console.log(req.cookies.cartItems);
+
         Product.findById(req.params.id, (err, product) => {
             if (err) {
                 res.send("error");

@@ -7,10 +7,9 @@ module.exports = (app, cookie, bcrypt) => {
                     let cartItems = [req.cookies.cartItems];
                     cartItems.push({name: product.name, size: req.body.size, quantity: req.body.quantity});
                     await res.cookie("cartItems", cartItems, {maxAge: 10800000});
-                    console.log(req.cookies.cartItems);
                 }
                 else {
-                    await res.cookie("cartItems", {name: product.name, size: req.body.size, quantity: req.body.quantity}, {maxAge: 10800000});
+                    await res.cookie("cartItems", {"name": product.name, "size": req.body.size, "quantity": req.body.quantity}, {maxAge: 10800000});
                 };
                 res.redirect("/");
             }
