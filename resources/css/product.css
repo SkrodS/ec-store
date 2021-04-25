@@ -18,6 +18,7 @@ body {
 }
 
 .btn-outline-warning {
+    color: black;
     border-color: #deae31;
     font-size: larger;
     top: 85%;

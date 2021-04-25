@@ -1,3 +1,2 @@
-module.exports = (cookies) => {
-    
+module.exports = (cookie) => {
 };

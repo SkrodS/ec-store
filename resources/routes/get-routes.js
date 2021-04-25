@@ -1,4 +1,4 @@
-module.exports = (app, models) => {
+module.exports = (app) => {
 
     //START PAGE
     app.get("/", (req, res) => {
