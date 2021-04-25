@@ -29,4 +29,39 @@ module.exports = (app, mon, bcrypt) => {
     });
 
     Order = mon.model("Order", orderSchema);
+
+    // Product.create({
+    //     name: "Gray EC Hoodie",
+    //     description: "A gray hoodie with the original EC logo.",
+    //     image: "/img/gray.jpg",
+    //     popular: true,
+    // });
+
+    // Product.create({
+    //     name: "Red EC Hoodie",
+    //     description: "A red hoodie with the original EC logo.",
+    //     image: "/img/red.jpg",
+    //     popular: true,
+    // });
+
+    // Product.create({
+    //     name: "T-shirt by Stina",
+    //     description: "A white t-shirt designed by Stina.",
+    //     image: "/img/stina-tshirt.jpg",
+    //     popular: true,
+    // });
+
+    // Product.create({
+    //     name: "T-shirt by Vilma",
+    //     description: "A white t-shirt designed by Vilma.",
+    //     image: "/img/vilma-tshirt.jpg",
+    //     popular: false,
+    // });
+
+    // Product.create({
+    //     name: "T-shirt by Jen",
+    //     description: "A white t-shirt designed by Jen.",
+    //     image: "/img/jen-tshirt.jpg",
+    //     popular: false,
+    // });
 };
