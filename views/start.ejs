@@ -51,10 +51,10 @@
         </ul>
         <ul class="nav navbar-nav ml-auto">
           <li class="d-none d-sm-block">
-            <a class="nav-link"><i class="fas fa-shopping-bag fa-lg"></i></a>
+            <a class="nav-link" href="/shopping-bag"><i class="fas fa-shopping-bag fa-lg"></i></a>
           </li>
           <li class="d-block d-sm-none">
-            <a class="nav-link" id="test"><i class="fas fa-shopping-bag"></i> Shopping bag</a>
+            <a class="nav-link" id="test" href="/shopping-bag"><i class="fas fa-shopping-bag"></i> Shopping bag</a>
           </li>
         </ul>
         </div>
@@ -104,7 +104,6 @@
                   <h5 class="card-title mb-2 font-weight-bold text-dark"><%= popular.name %></h5>
                   <div class="btn-group">
                     <a href="/product/<%= popular._id %>"" class="btn btn-light"><i class="far fa-eye"></i> View</a>
-                    <a href="#" class="btn btn-light"><i class="fas fa-shopping-bag"></i> Quick buy</a>
                   </div>
                 </h5>
               </div>

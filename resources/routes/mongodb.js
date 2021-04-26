@@ -25,7 +25,7 @@ module.exports = (app, mon, bcrypt) => {
         address: String,
         zipCode: Number,
         city: String,
-        cartItems: Object,
+        bagItems: Object,
     });
 
     Order = mon.model("Order", orderSchema);

@@ -42,7 +42,7 @@
                     <i class="fas fa-tshirt"></i> Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item active-dark" href="/all-products/t-shirts">T-Shirts</a>
+                    <a class="dropdown-item" href="/all-products/t-shirts">T-Shirts</a>
                     <a class="dropdown-item" href="/all-products/hoodies">Hoodies</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/all-products">All products</a>
@@ -51,10 +51,10 @@
             </ul>
             <ul class="nav navbar-nav ml-auto">
                 <li class="d-none d-sm-block">
-                <a class="nav-link"><i class="fas fa-shopping-bag fa-lg"></i></a>
+                <a class="nav-link" href="/shopping-bag"><i class="fas fa-shopping-bag fa-lg"></i></a>
                 </li>
                 <li class="d-block d-sm-none">
-                <a class="nav-link" id="test"><i class="fas fa-shopping-bag"></i> Shopping bag</a>
+                <a class="nav-link" id="test" href="/shopping-bag"><i class="fas fa-shopping-bag"></i> Shopping bag</a>
                 </li>
             </ul>
             </div>
@@ -93,7 +93,7 @@
                                 <option>XL</option>
                             </select>
                             <input class="form-control mt-3" type="number" min="0" value="1" name="quantity">
-                            <button type="submit" class="btn btn-outline-warning p-3 mb-5"><i class="fas fa-shopping-bag fa-lg"></i> Add to shopping bag</button>
+                            <button href="/shopping-bag" type="submit" class="btn btn-outline-link p-3 mb-5"><i class="fas fa-shopping-bag fa-lg"></i> Add to shopping bag</button>
                         </div>
                     </form>
                 </div>

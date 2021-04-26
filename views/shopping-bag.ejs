@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    
     <!-- Min CSS -->
-    <link rel="stylesheet" href="/css/t-shirts.css">
+    <link rel="stylesheet" href="/css/shopping-bag.css">
 
     <title>EC Store</title>
 
@@ -42,7 +42,7 @@
                     <i class="fas fa-tshirt"></i> Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item active-dark" href="/all-products/t-shirts">T-Shirts</a>
+                    <a class="dropdown-item" href="/all-products/t-shirts">T-Shirts</a>
                     <a class="dropdown-item" href="/all-products/hoodies">Hoodies</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/all-products">All products</a>
@@ -63,30 +63,6 @@
         <br>
 
         <!-- Content -->
-        <h1 class="text-center">T-shirts</h1>
-        <hr width="500">
-        <br>
-        <div class="container">
-            <div class="row mx-auto">
-                <% product.forEach(product => { %>
-                    <div class="col-md-4 mb-4">
-                        <a href="/product/<%= product._id %>">
-                        <div class="card">
-                            <img class="card-img-top" src="<%= product.image %>" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title mb-2 font-weight-bold text-dark"><%= product.name %></h5>
-                                    <div class="btn-group">
-                                        <a href="/product/<%= product._id %>"" class="btn btn-light"><i class="far fa-eye"></i> View</a>
-                                    </div>
-                                </h5>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                <% }); %>
-            </div>
-        </div>
-        <br>
 
         <!-- Footer -->
         <div class="position-sticky text-center my-5">

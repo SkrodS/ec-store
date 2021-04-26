@@ -50,7 +50,7 @@ module.exports = (app) => {
 
     //PRODUCT PAGE
     app.get("/product/:id", (req, res) => {
-        console.log(req.cookies.cartItems);
+        console.log(req.cookies.bagItems);
         console.log("done");
         Product.findById(req.params.id, (err, product) => {
             if (err) {
@@ -61,9 +61,9 @@ module.exports = (app) => {
             };
         });
     });
-};
 
-//CART PAGE (WIP)
-// app.get("/shopping-cart", (req, res) => {
-//     res.render("shopping-cart", { cartItems: req.cookies.cartitems });
-// });
+    // bag PAGE (WIP)
+    app.get("/shopping-bag", (req, res) => {
+        res.render("shopping-bag", { bagItems: req.cookies.bagitems });
+    });
+};
