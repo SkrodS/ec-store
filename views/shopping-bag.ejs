@@ -63,6 +63,48 @@
         <br>
 
         <!-- Content -->
+        <% if (bagItems) { %>
+            <div class="shadow p-3 mt-4 bg-white mx-auto rounded fixed-top text-center" style="min-width: 300px; width: min-content;">
+                <h4>Not done yet?</h4>
+                <a class="btn btn-outline-link" href="/all-products">–Continue shopping!</a>
+            </div>
+            <div class="container mt-5">
+
+                <% if(Array.isArray(bagItems)) { 
+                    bagItems.forEach(product => { %>
+                        <div class="row justify-content-md-center">
+                            <div class="col col-auto">
+                                <h2>hej</h2>
+                            </div>
+                            <div class="col col-auto">
+                                <h2><%= product.name %></h2>
+                            </div>
+                            <div class="col col-auto">
+                                <h2>hej</h2>
+                            </div>
+                        </div>
+                <% }); 
+                }
+                else { %>
+                    <div class="row justify-content-md-center">
+                        <div class="col col-auto">
+                            <img src="" alt="">
+                        </div>
+                        <div class="col col-auto">
+                            <h2><%= bagItems.name %></h2>
+                        </div>
+                        <div class="col col-auto">
+                            <h2>hej</h2>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        <% } 
+        else { %>
+            <div id="no-items-text">
+                <h1 class="text-center">Your shopping bag is empty... <i class="far fa-sad-tear"></i></h1>
+            </div>
+        <% }; %>
 
         <!-- Footer -->
         <div class="position-sticky text-center my-5">

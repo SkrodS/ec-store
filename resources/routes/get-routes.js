@@ -64,6 +64,19 @@ module.exports = (app) => {
 
     // bag PAGE (WIP)
     app.get("/shopping-bag", (req, res) => {
-        res.render("shopping-bag", { bagItems: req.cookies.bagitems });
+        // if (req.cookies.bagItems) {
+        //     let image = {};
+        //     if (Array.isArray(req.cookies.bagItems)) {
+        //         req.cookies.bagItems.forEach(item => {
+        //         });
+        //     }
+        //     else {
+
+        //     };
+        // };
+
+        // console.log(image);
+
+        res.render("shopping-bag", { bagItems: req.cookies.bagItems});
     });
 };
