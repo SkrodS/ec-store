@@ -77,10 +77,18 @@
                 <% if(Array.isArray(bagItems)) {
                     bagItems.forEach(product => { %>
                         <div class="row justify-content-md-center">
-                            <div class="col col-md-4">
+                            <div class="col col-auto my-auto">
+                                <form action="/update-bag" method="post">
+                                    <input type="hidden" value="<%= JSON.stringify(product) %>" name="deleted">
+                                    <button type="submit" class="close" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col col-md-5">
                                 <img class="img-thumbnail" width="200" src="<%= product.image %>" alt="">
                             </div>
-                            <div class="col col-auto my-auto">
+                            <div class="col col-md-4 my-auto">
                                 <h2><%= product.name %></h2>
                             </div>
                             <div class="col col-auto my-auto ml-5">
@@ -92,10 +100,18 @@
                 }
                 else { %>
                     <div class="row justify-content-md-center">
-                        <div class="col col-md-4">
+                        <div class="col col-auto my-auto">
+                            <form action="/update-bag" method="post">
+                                <input type="hidden" value="<%= JSON.stringify(bagItems) %>" name="deleted">
+                                <button type="submit" class="close" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col col-md-5">
                             <img class="img-thumbnail" width="200" src="<%= bagItems.image %>" alt="">
                         </div>
-                        <div class="col col-auto my-auto">
+                        <div class="col col-md-4 my-auto">
                             <h2><%= bagItems.name %></h2>
                         </div>
                         <div class="col col-auto my-auto ml-5">

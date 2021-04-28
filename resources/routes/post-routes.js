@@ -39,4 +39,30 @@ module.exports = (app, cookie, bcrypt) => {
             };
         });
     });
+
+    //UPDATE BAG ROUTE
+    app.post("/update-bag", async (req, res) => {
+        let bag = req.cookies.bagItems;
+        let deleted = JSON.parse(req.body.deleted)
+        if (Array.isArray(bag) && bag.length > 1) {
+            bag.forEach(element => {
+                if (deleted.name == element.name && deleted.size == element.size) {
+                    bag = bag.filter(function(v) {
+                        return  v.name !== deleted.name && v.size != deleted.size;
+                      });
+                };
+            });
+
+            if (!bag.length) {
+                await res.clearCookie("bagItems");
+            }
+            else {
+                await res.cookie("bagItems", bag, { maxAge: 10800000 });
+            };
+        }
+        else {
+            await res.clearCookie("bagItems");
+        }
+        res.redirect("/shopping-bag");
+    });
 };

@@ -1,4 +1,4 @@
-module.exports = (app) => {
+module.exports = (app, bcrypt) => {
 
     //START PAGE
     app.get("/", (req, res) => {
@@ -64,6 +64,6 @@ module.exports = (app) => {
 
     // bag PAGE (WIP)
     app.get("/shopping-bag", (req, res) => {
-        res.render("shopping-bag", { bagItems: req.cookies.bagItems});
+        res.render("shopping-bag", { bagItems: req.cookies.bagItems });
     });
 };
