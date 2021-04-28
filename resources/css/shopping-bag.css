@@ -21,11 +21,14 @@ body {
     margin-top: 10px;
 }
 
-
 .btn-outline-link:hover {
     background-color: #deae31;
     border-color: #deae31;
     font-size: larger;
+}
+
+.container {
+    margin-top: 5rem;
 }
 
 #no-items-text {

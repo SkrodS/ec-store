@@ -84,6 +84,7 @@
                     <hr class=" ml-0" width="150">
                     <p class=""><%= product.description %></p>
                     <hr class=" ml-0" width="150">
+                    <h1 class="display-4 my-5 color"><%= product.price %>:-</h1>
                     <form action="/product/<%= product.id %>/add-item" method="post">
                         <div class="form-group">
                             <select class="form-control" name="size">
@@ -93,7 +94,9 @@
                                 <option>XL</option>
                             </select>
                             <input class="form-control mt-3" type="number" min="0" value="1" name="quantity">
-                            <button href="/shopping-bag" type="submit" class="btn btn-outline-link p-3 mb-5"><i class="fas fa-shopping-bag fa-lg"></i> Add to shopping bag</button>
+                            <input type="hidden" value="<%= product.price %>" name="price">
+                            <input type="hidden" value="<%= product.image %>" name="image">
+                            <button href="/shopping-bag" type="submit" class="btn btn-outline-link p-3 mt-5"><i class="fas fa-shopping-bag fa-lg"></i> Add to shopping bag</button>
                         </div>
                     </form>
                 </div>

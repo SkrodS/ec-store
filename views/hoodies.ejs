@@ -70,11 +70,12 @@
             <div class="row mx-auto">
                 <% product.forEach(product => { %>
                     <div class="col-md-4 mb-4">
-                        <a href="/product/<%= product._id %>">
+                        <a href="/product/<%= product._id %>" class="text-dark">
                         <div class="card">
                             <img class="card-img-top" src="<%= product.image %>" alt="">
                             <div class="card-body">
                                 <h5 class="card-title mb-2 font-weight-bold text-dark"><%= product.name %></h5>
+                                <h4 class="color"><%= product.price %>:-</h4>
                                     <div class="btn-group">
                                         <a href="/product/<%= product._id %>"" class="btn btn-light"><i class="far fa-eye"></i> View</a>
                                     </div>

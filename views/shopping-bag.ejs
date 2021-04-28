@@ -64,39 +64,45 @@
 
         <!-- Content -->
         <% if (bagItems) { %>
-            <div class="shadow p-3 mt-4 bg-white mx-auto rounded fixed-top text-center" style="min-width: 300px; width: min-content;">
+            <div class="shadow p-3 mt-4 bg-white mx-auto rounded fixed-top text-center d-none d-xl-block" style="min-width: 300px; width: min-content;">
                 <h4>Not done yet?</h4>
                 <a class="btn btn-outline-link" href="/all-products">–Continue shopping!</a>
             </div>
-            <div class="container mt-5">
 
-                <% if(Array.isArray(bagItems)) { 
+            <div class="container">
+
+                <h1 class="mb-5">Your shopping bag:</h1>
+
+                <hr>
+                <% if(Array.isArray(bagItems)) {
                     bagItems.forEach(product => { %>
                         <div class="row justify-content-md-center">
-                            <div class="col col-auto">
-                                <h2>hej</h2>
+                            <div class="col col-md-4">
+                                <img class="img-thumbnail" width="200" src="<%= product.image %>" alt="">
                             </div>
-                            <div class="col col-auto">
+                            <div class="col col-auto my-auto">
                                 <h2><%= product.name %></h2>
                             </div>
-                            <div class="col col-auto">
-                                <h2>hej</h2>
+                            <div class="col col-auto my-auto ml-5">
+                                <h2><%= product.quantity %>st: <%= product.quantity * product.price %>:-</h2>
                             </div>
                         </div>
+                        <hr>
                 <% }); 
                 }
                 else { %>
                     <div class="row justify-content-md-center">
-                        <div class="col col-auto">
-                            <img src="" alt="">
+                        <div class="col col-md-4">
+                            <img class="img-thumbnail" width="200" src="<%= bagItems.image %>" alt="">
                         </div>
-                        <div class="col col-auto">
+                        <div class="col col-auto my-auto">
                             <h2><%= bagItems.name %></h2>
                         </div>
-                        <div class="col col-auto">
-                            <h2>hej</h2>
+                        <div class="col col-auto my-auto ml-5">
+                            <h2><%= bagItems.quantity %>st: <%= bagItems.quantity * bagItems.price %>:-</h2>
                         </div>
                     </div>
+                    <hr>
                 <% } %>
             </div>
         <% } 

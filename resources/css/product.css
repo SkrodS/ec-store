@@ -36,6 +36,10 @@ body {
     background-color: #deae31;
 }
 
+.color {
+    color: red;
+}
+
 .breadcrumb {
     border-radius: 0;
 }

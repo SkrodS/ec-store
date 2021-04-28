@@ -6,6 +6,7 @@ module.exports = (app, mon, bcrypt) => {
         description: String,
         image: String,
         popular: Boolean,
+        price: Number,
     });
 
     Product = mon.model("Product", productSchema);
@@ -35,6 +36,7 @@ module.exports = (app, mon, bcrypt) => {
     //     description: "A gray hoodie with the original EC logo.",
     //     image: "/img/gray.jpg",
     //     popular: true,
+    //     price: 400,
     // });
 
     // Product.create({
@@ -42,6 +44,7 @@ module.exports = (app, mon, bcrypt) => {
     //     description: "A red hoodie with the original EC logo.",
     //     image: "/img/red.jpg",
     //     popular: true,
+    //     price: 400,
     // });
 
     // Product.create({
@@ -49,6 +52,7 @@ module.exports = (app, mon, bcrypt) => {
     //     description: "A white t-shirt designed by Stina.",
     //     image: "/img/stina-tshirt.jpg",
     //     popular: true,
+    //     price: 250,
     // });
 
     // Product.create({
@@ -56,6 +60,7 @@ module.exports = (app, mon, bcrypt) => {
     //     description: "A white t-shirt designed by Vilma.",
     //     image: "/img/vilma-tshirt.jpg",
     //     popular: false,
+    //     price: 250,
     // });
 
     // Product.create({
@@ -63,5 +68,6 @@ module.exports = (app, mon, bcrypt) => {
     //     description: "A white t-shirt designed by Jen.",
     //     image: "/img/jen-tshirt.jpg",
     //     popular: false,
+    //     price: 250,
     // });
 };

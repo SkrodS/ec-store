@@ -6,7 +6,11 @@ module.exports = (app, cookie, bcrypt) => {
             if (product) {
                 if (req.cookies.bagItems) {
                     let bagItems = [req.cookies.bagItems];
-                    bagItems.push({name: product.name, size: req.body.size, quantity: parseInt(req.body.quantity)});
+                    bagItems.push({ name: product.name,
+                                    size: req.body.size,
+                                    quantity: parseInt(req.body.quantity),
+                                    price: parseInt(req.body.price),
+                                    image: req.body.image });
                     
                     bagItems = bagItems.reduce((acc, val) => acc.concat(val), []);
 
@@ -21,7 +25,12 @@ module.exports = (app, cookie, bcrypt) => {
                     await res.cookie("bagItems", bagItems, { maxAge: 10800000 });
                 }
                 else {
-                    await res.cookie("bagItems", { "name": product.name, "size": req.body.size, "quantity": parseInt(req.body.quantity) }, { maxAge: 10800000 });
+                    await res.cookie("bagItems", { "name": product.name, 
+                                                    "size": req.body.size,
+                                                    "quantity": parseInt(req.body.quantity),
+                                                    "price": parseInt(req.body.price),
+                                                    "image": req.body.image }, 
+                                                    { maxAge: 10800000 });
                 };
                 res.redirect("/shopping-bag");
             }
