@@ -93,7 +93,7 @@
                                 <h3><%= product.size %> <%= product.name %></h3>
                             </div>
                             <div class="col col-auto my-auto ml-5">
-                                <h2><%= product.quantity %>st: <%= product.quantity * product.price %>:-</h2>
+                                <h3><%= product.quantity %>st: <%= product.quantity * product.price %>:-</h3>
                             </div>
                         </div>
                         <hr>
@@ -118,11 +118,11 @@
                             <h3><%= bagItems.size %> <%= bagItems.name %></h3>
                         </div>
                         <div class="col col-auto my-auto ml-5">
-                            <h2><%= bagItems.quantity %>st: <%= bagItems.quantity * bagItems.price %>:-</h2>
+                            <h3><%= bagItems.quantity %>st: <%= bagItems.quantity * bagItems.price %>:-</h3>
                         </div>
                     </div>
                     <hr>
-                    <h3 class="mt-5 text-center font-weight-bold">Your total: <%= bagItems.quantity * bagItems.price %></h3>
+                    <h3 class="mt-5 text-center font-weight-bold">Your total: <%= bagItems.quantity * bagItems.price %>:-</h3>
                 <% } %>
 
         
