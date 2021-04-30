@@ -1,3 +1,5 @@
+const cookieParser = require("cookie-parser");
+
 module.exports = (app, bcrypt) => {
 
     //START PAGE
@@ -62,8 +64,18 @@ module.exports = (app, bcrypt) => {
         });
     });
 
-    // bag PAGE (WIP)
+    //BAG PAGE
     app.get("/shopping-bag", (req, res) => {
         res.render("shopping-bag", { bagItems: req.cookies.bagItems });
     });
+
+    //ORDER COMPLETE PAGE
+    app.get("/order-complete", (req, res) => {
+        if (req.cookies.orderComplete) {
+            res.render("order-complete");
+        }
+        else {
+            res.redirect("/");
+        };
+    }) 
 };

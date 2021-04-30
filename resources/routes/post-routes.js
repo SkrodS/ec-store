@@ -44,12 +44,11 @@ module.exports = (app, cookie, bcrypt) => {
     app.post("/update-bag", async (req, res) => {
         let bag = req.cookies.bagItems;
         let deleted = JSON.parse(req.body.deleted)
+
         if (Array.isArray(bag) && bag.length > 1) {
-            bag.forEach(element => {
+            bag.forEach((element, i) => {
                 if (deleted.name == element.name && deleted.size == element.size) {
-                    bag = bag.filter(function(v) {
-                        return  v.name !== deleted.name && v.size != deleted.size;
-                      });
+                    bag.splice(i, 1);
                 };
             });
 
@@ -64,5 +63,22 @@ module.exports = (app, cookie, bcrypt) => {
             await res.clearCookie("bagItems");
         }
         res.redirect("/shopping-bag");
+    });
+
+    //CREATE RODER ROUTE
+    app.post("/create-order", async (req, res) => {
+        await Order.create({
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.email,
+            address: req.body.address,
+            country: req.body.country,
+            city: req.body.city,
+            zipCode: req.body.zip,
+            bagItems: JSON.parse(req.body.bagItems),
+        })
+        await res.cookie("orderComplete", true, { maxAge: 600000 });
+        await res.clearCookie("bagItems");
+        res.redirect("/order-complete");
     });
 };

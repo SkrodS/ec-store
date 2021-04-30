@@ -23,10 +23,12 @@ module.exports = (app, mon, bcrypt) => {
     const orderSchema = new mon.Schema({
         firstname: String,
         lastname: String,
+        email: String,
         address: String,
-        zipCode: Number,
+        country: String,
         city: String,
-        bagItems: Object,
+        zipCode: Number,
+        bagItems: Array,
     });
 
     Order = mon.model("Order", orderSchema);
