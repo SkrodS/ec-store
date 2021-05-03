@@ -14,7 +14,7 @@ module.exports = (app, mon, bcrypt) => {
     const adminSchema = new mon.Schema({
         username: String,
         password: String,
-        adminKey: String,
+        sessionId: String,
     });
 
     Admin = mon.model("Admin", adminSchema);
@@ -71,5 +71,11 @@ module.exports = (app, mon, bcrypt) => {
     //     image: "/img/jen-tshirt.jpg",
     //     popular: false,
     //     price: 250,
+    // });
+
+    // Admin.create({
+    //     username: "robin",
+    //     password: bcrypt.hashSync("robinadmin", 10),
+    //     sessionId: null,
     // });
 };

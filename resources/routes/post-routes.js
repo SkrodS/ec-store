@@ -65,7 +65,7 @@ module.exports = (app, cookie, bcrypt) => {
         res.redirect("/shopping-bag");
     });
 
-    //CREATE RODER ROUTE
+    //CREATE ORDER ROUTE
     app.post("/create-order", async (req, res) => {
         await Order.create({
             firstname: req.body.firstname,
@@ -80,5 +80,29 @@ module.exports = (app, cookie, bcrypt) => {
         await res.cookie("orderComplete", true, { maxAge: 600000 });
         await res.clearCookie("bagItems");
         res.redirect("/order-complete");
+    });
+
+    //SIGN IN ROUTE
+    app.post("/post/sign-in", (req, res) => {
+        Admin.findOne({ "username": req.body.username }, async (err, user) => {
+            if (err) {
+                console.log(err);
+                return
+            }
+            if (user) {
+                if (bcrypt.compareSync(req.body.password, user.password)) {
+                    const sessionId = bcrypt.hashSync((Math.random(Date.prototype.getMilliseconds).toString()), 10);
+                    await res.cookie("admin", sessionId, { maxAge: 10800000 });
+                    await Admin.findOneAndUpdate({ "username": user.username }, { "sessionId": sessionId});
+                    res.redirect("/admin");
+                }
+                else {
+                    res.redirect("/sign-in?error=true");
+                }
+            }
+            else {
+                res.redirect("/sign-in?error=true");
+            }
+        })
     });
 };

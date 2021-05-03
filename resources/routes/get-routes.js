@@ -77,5 +77,54 @@ module.exports = (app, bcrypt) => {
         else {
             res.redirect("/");
         };
-    }) 
+    });
+
+    function validateCookie(req, res, next) {
+
+        if (req.cookies.admin) {
+            Admin.findOne({ sessionId: req.cookies.admin }, (err, admin) => {
+                if (admin) {
+                    if (req.cookies.admin == admin.sessionId) {
+                        next()
+                    }
+                    else {
+                        res.status(403).redirect("/sign-in");
+                    };
+                }
+                else {
+                    res.status(403).redirect("sign-in");
+                };
+            });
+        }
+        else {
+            res.status(403).redirect("sign-in");
+        };
+    }
+    
+    //ADMIN PAGE
+    app.get("/sign-in", (req, res) => {
+        if (req.cookies.admin) {
+            Admin.findOne({ sessionId: req.cookies.admin }, (err, admin) => {
+                if (admin) {
+                    if (req.cookies.admin == admin.sessionId) {
+                        console.log("done");
+                        res.redirect("/admin")
+                    }
+                    else {
+                        res.render("sign-in", { error: req.query.error });
+                    };
+                }
+                else {
+                    res.render("sign-in", { error: req.query.error });
+                };
+            });
+        }
+        else {
+            res.render("sign-in", { error: req.query.error });
+        };
+    });
+
+    app.get("/admin", validateCookie, (req, res) => {
+        res.send("welcome");
+    });
 };
