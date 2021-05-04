@@ -34,6 +34,20 @@ module.exports = (app, mon, bcrypt) => {
 
     Order = mon.model("Order", orderSchema);
 
+    const archiveSchema = new mon.Schema({
+        firstname: String,
+        lastname: String,
+        email: String,
+        address: String,
+        country: String,
+        city: String,
+        zipCode: Number,
+        bagItems: Array,
+        date: Date,
+    });
+
+    Archive = mon.model("Archive", orderSchema);
+
     // Product.create({
     //     name: "Gray EC Hoodie",
     //     description: "A gray hoodie with the original EC logo.",

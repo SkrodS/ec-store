@@ -37,6 +37,14 @@ body {
     margin-bottom: 25%;
 }
 
+.img-thumbnail {
+    min-width: 6.25rem;
+};
+
+.navbar-collapse {
+    padding-left: 1.875rem;
+}
+
 @media screen and (max-width: 35.9375rem) {
     #test {
         margin-bottom: 0.625rem;
@@ -45,5 +53,9 @@ body {
     
     .nav {
         text-align: center
+    }
+
+    .navbar-collapse {
+        padding-left: 0;
     }
 }

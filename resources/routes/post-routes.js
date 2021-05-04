@@ -67,7 +67,7 @@ module.exports = (app, cookie, bcrypt) => {
 
     //CREATE ORDER ROUTE
     app.post("/create-order", async (req, res) => {
-        await Order.create({
+        await Archive.create({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: req.body.email,
