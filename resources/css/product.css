@@ -20,14 +20,14 @@ body {
 .btn-outline-link {
     color: black;
     border-color: #deae31;
+    background-color: #deae31;
     font-size: larger;
     top: 85%;
     margin-top: 10px;
 }
 
-
 .btn-outline-link:hover {
-    background-color: #deae31;
+    background-color: white;
     border-color: #deae31;
     font-size: larger;
 }

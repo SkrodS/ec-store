@@ -125,6 +125,6 @@ module.exports = (app, bcrypt) => {
     });
 
     app.get("/admin", validateCookie, (req, res) => {
-        res.send("welcome");
+        res.render("admin");
     });
 };
