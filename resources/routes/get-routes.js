@@ -42,7 +42,7 @@ module.exports = (app, bcrypt) => {
     app.get("/all-products/t-shirts", (req, res) => {
         Product.find({ "name": { $regex: ".*T-shirt.*" } }, [], (err, product) => {
             if (err) {
-                res.send("error");
+                res.send(err);
             }
             else {
                 res.render("t-shirts", { product: product })
@@ -52,8 +52,6 @@ module.exports = (app, bcrypt) => {
 
     //PRODUCT PAGE
     app.get("/product/:id", (req, res) => {
-        console.log(req.cookies.bagItems);
-        console.log("done");
         Product.findById(req.params.id, (err, product) => {
             if (err) {
                 res.send("error");
@@ -107,7 +105,6 @@ module.exports = (app, bcrypt) => {
             Admin.findOne({ sessionId: req.cookies.admin }, (err, admin) => {
                 if (admin) {
                     if (req.cookies.admin == admin.sessionId) {
-                        console.log("done");
                         res.redirect("/admin")
                     }
                     else {
@@ -125,6 +122,16 @@ module.exports = (app, bcrypt) => {
     });
 
     app.get("/admin", validateCookie, (req, res) => {
-        res.render("admin");
+        Product.find((err, products) => {
+            if (err) {
+                res.send(err);
+            };
+            Order.find((err, orders) => {
+                if (err) {
+                    res.send(err);
+                };
+                res.render("admin", { products: products, orders: orders });
+            });
+        });
     });
 };

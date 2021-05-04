@@ -76,6 +76,7 @@ module.exports = (app, cookie, bcrypt) => {
             city: req.body.city,
             zipCode: req.body.zip,
             bagItems: JSON.parse(req.body.bagItems),
+            date: Date.now(),
         })
         await res.cookie("orderComplete", true, { maxAge: 600000 });
         await res.clearCookie("bagItems");
@@ -104,5 +105,12 @@ module.exports = (app, cookie, bcrypt) => {
                 res.redirect("/sign-in?error=true");
             }
         })
+    });
+
+    //LOG OUT ROUTE
+    app.post("/log-out", async (req, res) => {
+        await Admin.findOneAndUpdate({ sessionId: req.cookies.admin }, { sessionId: null });
+        res.clearCookie("admin");
+        res.redirect("/sign-in");
     });
 };

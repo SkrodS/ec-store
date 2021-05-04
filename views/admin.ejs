@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    
     <!-- Min CSS -->
-    <link rel="stylesheet" href="/css/sign-in.css">
+    <link rel="stylesheet" href="/css/admin.css">
 
     <title>EC Store</title>
 
@@ -27,14 +27,100 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/">
         <img src="/img/EC_Clique_Logo.png" alt="" width="48" class="d-inline-block align-text-top" id="logo"></a>
+        <ul class="nav navbar-nav ml-auto">
+            <form action="/log-out" method="post">
+                <button type="submit" class="btn btn-outline-link mt-0"><i class="fas fa-sign-out-alt"></i> Log out</button>
+            </form>
+        </ul>
     </nav>
 
     <!-- Content -->
+    <div class="row mx-auto mt-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="h3">Products<button class="btn float-right"><i class="fas fa-plus"></i></button></h1>
+                </div>
+                <div class="card-body">
+                    <% if (products.length) { %>
+                        <div class="container">
+                            <div class="row mx-auto">
+                                <% products.forEach(product => { %>
+                                    <div class="col-md-4 mb-4">
+                                        <a href="/product/<%= product._id %>" class="text-dark">
+                                        <div class="card">
+                                            <img class="card-img-top" src="<%= product.image %>" alt="">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-2 font-weight-bold text-dark"><%= product.name %></h5>
+                                                <h4 class="color"><%= product.price %>:-</h4>
+                                                <a href="/product/<%= product._id %>" class="btn btn-light"><i class="fas fa-edit"></i> Edit</a>
+                                                <a href="/product/<%= product._id %>" class="btn btn-light"><i class="far fa-eye"></i> View</a>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                    <% }
+                    else { %>
+                        <h1 class="cart-title text-center">No products yet</h1>
+                    <% }; %>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="h3">Orders</h1>
+                </div>
+                <div class="card-body">
+                    <% if (orders.length) { %>
+                        <div class="container">
+                            <div class="row mx-auto">
+                                <% orders.reverse().forEach(order => { %>
+                                    <div class="col-md-6">
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <h1 class="h3 font-weight-bold"><%= order.firstname %> <%= order.lastname %>'s order</h1>
+                                                <small><%= order.date.toLocaleString('se-SE') %></small>
+                                                <hr class="my-3">
+                                                <h1 class="h5 font-weight-bold">Shipping information:</h1>
+                                                <div class="ml-2 mb-3">
+                                                    <%= order.firstname %> <%= order.lastname %><br>
+                                                    <%= order.address %>, <%= order.zipCode %><br>
+                                                    <%= order.city %>, <%= order.country %>
+                                                </div>
+
+                                                <h1 class="h5 font-weight-bold">Items:</h1>
+                                                <% order.bagItems.forEach(item => { %>
+                                                    • <%= item.name %> (<%= item.size %>): <%= item.quantity %>st<br>
+                                                <% }); %>
+
+                                                <h1 class="h5 font-weight-bold mt-3">Email: <a class="gul" href="mailto:<%= order.email %>"><%= order.email %></a></h1>
+                                                <hr class="my-3">
+                                                <a class="btn btn-light" href="#"><i class="fas fa-archive"></i> Archive</a>
+                                                <a class="btn btn-light float-right" href="#"><i class="fas fa-trash-alt"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>      
+                    <% }
+                    else { %>
+                        <h1 class="cart-title text-center">No orders yet</h1>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <div class="lg-fixed-bottom text-center my-5">
+    <div class="position-sticky text-center my-5">
       <p>Made by: <a id="color" href="http://www.github.com/SkrodS">Robin Widjeback</a></p>
     </div>
   </body>
