@@ -1,2 +1,2 @@
-module.exports = (app, cookie, bcrypt) => {
+module.exports = (app, cookie) => {
 };

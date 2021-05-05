@@ -67,7 +67,7 @@ module.exports = (app, cookie, bcrypt) => {
 
     //CREATE ORDER ROUTE
     app.post("/create-order", async (req, res) => {
-        await Archive.create({
+        await Order.create({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: req.body.email,
@@ -112,5 +112,73 @@ module.exports = (app, cookie, bcrypt) => {
         await Admin.findOneAndUpdate({ sessionId: req.cookies.admin }, { sessionId: null });
         res.clearCookie("admin");
         res.redirect("/sign-in");
+    });
+
+    //VALIDATE COOKIE FUNCTION
+    function validateCookie(req, res, next) {
+
+        if (req.cookies.admin) {
+            Admin.findOne({ sessionId: req.cookies.admin }, (err, admin) => {
+                if (admin) {
+                    if (req.cookies.admin == admin.sessionId) {
+                        next()
+                    }
+                    else {
+                        res.status(403).redirect("/sign-in");
+                    };
+                }
+                else {
+                    res.status(403).redirect("sign-in");
+                };
+            });
+        }
+        else {
+            res.status(403).redirect("sign-in");
+        };
+    };
+
+    //UNARCHIVE ORDER
+    app.post("/archive-order/:id", validateCookie, (req, res) => {
+        Order.findOneAndDelete({ _id: req.params.id }, async (err, order) => {
+            if (err) {
+                res.send(err);
+            }
+            else {
+                await Archive.create({
+                    bagItems: order.bagItems,
+                    firstname: order.firstname,
+                    lastname: order.lastname,
+                    email: order.email,
+                    address: order.address,
+                    country: order.country,
+                    city: order.city,
+                    zipCode: order.zipCode,
+                    date: order.date,
+                });
+            };
+        });
+        res.redirect("back");
+    });
+
+    app.post("/un-archive-order/:id", validateCookie, (req, res) => {
+        Archive.findOneAndDelete({ _id: req.params.id }, async (err, order) => {
+            if (err) {
+                res.send(err);
+            }
+            else {
+                await Order.create({
+                    bagItems: order.bagItems,
+                    firstname: order.firstname,
+                    lastname: order.lastname,
+                    email: order.email,
+                    address: order.address,
+                    country: order.country,
+                    city: order.city,
+                    zipCode: order.zipCode,
+                    date: order.date,
+                });
+            };
+        });
+        res.redirect("back");
     });
 };

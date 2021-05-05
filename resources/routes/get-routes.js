@@ -99,7 +99,7 @@ module.exports = (app, bcrypt) => {
         };
     }
     
-    //ADMIN PAGE
+    //SIGN IN PAGE
     app.get("/sign-in", (req, res) => {
         if (req.cookies.admin) {
             Admin.findOne({ sessionId: req.cookies.admin }, (err, admin) => {
@@ -121,17 +121,58 @@ module.exports = (app, bcrypt) => {
         };
     });
 
+    //ADMIN-PANEL PAGE
     app.get("/admin", validateCookie, (req, res) => {
         Product.find((err, products) => {
             if (err) {
                 res.send(err);
+            }
+            else {
+                Order.find((err, orders) => {
+                    if (err) {
+                        res.send(err);
+                    }
+                    else {
+                        res.render("admin", { products: products, orders: orders });
+                    };
+                });
             };
-            Order.find((err, orders) => {
-                if (err) {
-                    res.send(err);
-                };
-                res.render("admin", { products: products, orders: orders });
-            });
         });
+    });
+
+    //ADMIN PRODUCTS PAGE
+    app.get("/admin-products", validateCookie, (req, res) => {
+        Product.find((err, products) => {
+            if (err) {
+                res.send(err);
+            }
+            else {
+                res.render("admin-products", { products: products });
+            };
+        });
+    });
+
+    //ADMIN ORDERS PAGE
+    app.get("/admin-orders", validateCookie, (req, res) => {
+        Order.find((err, orders) => {
+            if (err) {
+                res.send(err);
+            }
+            else {
+                Archive.find((err, archive) => {
+                    if (err) {
+                        res.send(err);
+                    }
+                    else {
+                        res.render("admin-orders", { orders: orders, archive: archive });
+                    }
+                });
+            };
+        });
+    });
+
+    //UPDATE PRODUCT PAGE
+    app.get("/update-product/:id", validateCookie, (req, res) => {
+        console.log("hej");
     });
 };

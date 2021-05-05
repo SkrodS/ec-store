@@ -12,6 +12,6 @@ module.exports = (app, mon, bcrypt, cookie) => {
     require("./mongodb.js")(app, mon, bcrypt);
     require("./get-routes.js")(app, bcrypt);
     require("./post-routes")(app, cookie, bcrypt);
-    require("./delete-routes")
-    require("./put-routes")(app, cookie)
+    require("./delete-routes")(app, cookie);
+    require("./put-routes")(app, cookie);
 };

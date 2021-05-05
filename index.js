@@ -10,6 +10,7 @@ require("dotenv").config();
 app.set("view engine", "ejs");
 app.use(exp.urlencoded({extended: true}));
 app.use(exp.static("resources"));
+app.use(mo("_method"));
 app.use(cookie());
 
 require("./resources/routes/routes.js")(app, mon, bcrypt, cookie);
