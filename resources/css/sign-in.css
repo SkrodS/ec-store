@@ -25,3 +25,7 @@ body {
     top: 85%;
     margin-top: 10px;
 }
+
+.btn-outline-link:hover {
+    background-color: white;
+}

@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    
     <!-- Min CSS -->
-    <link rel="stylesheet" href="/css/admin-products.css">
+    <link rel="stylesheet" href="/css/update-product.css">
 
     <title>EC Store</title>
 
@@ -51,35 +51,6 @@
     </nav>
 
     <!-- Content -->
-    <div class="shadow p-3 mt-4 mb-5 bg-white mx-auto rounded text-center" style="min-width:300px; max-width:30%;">
-        <h1 class="display-4 text-center">Product panel</h1>
-        <a href="/create-product" class="btn btn-outline-link"><i class="fas fa-plus"></i> Create new</a>
-    </div>
-
-    <% if (products.length) { %>
-        <div class="container">
-            <div class="row mx-auto">
-                <% products.forEach(product => { %>
-                    <div class="col-md-4">
-                        <a href="/update-product/<%= product._id %>" class="text-dark">
-                        <div class="card mb-4">
-                            <img class="card-img-top" src="<%= product.image %>" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title mb-2 font-weight-bold text-dark"><%= product.name %></h5>
-                                <h4 class="color"><%= product.price %>:-</h4>
-                                <a href="/update-product/<%= product._id %>" class="btn btn-light"><i class="fas fa-edit"></i> Edit</a>
-                                <a href="/product/<%= product._id %>" class="btn btn-light"><i class="far fa-eye"></i> View</a>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                <% }); %>
-            </div>
-        </div>
-    <% }
-    else { %>
-        <h1 class="cart-title text-center">No products yet</h1>
-    <% }; %>
 
     <!-- Footer -->
     <div class="position-sticky text-center my-5">

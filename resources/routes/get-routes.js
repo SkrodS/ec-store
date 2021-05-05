@@ -173,6 +173,18 @@ module.exports = (app, bcrypt) => {
 
     //UPDATE PRODUCT PAGE
     app.get("/update-product/:id", validateCookie, (req, res) => {
-        console.log("hej");
+        Product.findOne({ _id: req.params.id }, async (err, product) => {
+            if (err) {
+                res.send(err);
+            }
+            else {
+                await res.render("update-product", { product: product });
+            }
+        });
+    });
+
+    //CREATE NEW PRODUCT PAGE
+    app.get("/create-product/", validateCookie, (req, res) => {
+        res.render("create-product");
     });
 };
