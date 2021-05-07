@@ -35,7 +35,7 @@ module.exports = (app, cookie, bcrypt) => {
                 res.redirect("/shopping-bag");
             }
             else {
-                res.send(err);
+                res.send("Something went wrong...");;
             };
         });
     });
@@ -87,7 +87,7 @@ module.exports = (app, cookie, bcrypt) => {
     app.post("/post/sign-in", (req, res) => {
         Admin.findOne({ "username": req.body.username }, async (err, user) => {
             if (err) {
-                console.log(err);
+                res.send("Something went wrong...");;
                 return
             }
             if (user) {
@@ -141,7 +141,7 @@ module.exports = (app, cookie, bcrypt) => {
     app.post("/archive-order/:id", validateCookie, (req, res) => {
         Order.findOneAndDelete({ _id: req.params.id }, async (err, order) => {
             if (err) {
-                res.send(err);
+                res.send("Something went wrong...");
             }
             else {
                 await Archive.create({
@@ -164,7 +164,7 @@ module.exports = (app, cookie, bcrypt) => {
     app.post("/un-archive-order/:id", validateCookie, (req, res) => {
         Archive.findOneAndDelete({ _id: req.params.id }, async (err, order) => {
             if (err) {
-                res.send(err);
+                res.send("Something went wrong...");;
             }
             else {
                 await Order.create({

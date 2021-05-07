@@ -6,7 +6,7 @@ module.exports = (app, bcrypt) => {
     app.get("/", (req, res) => {
         Product.find({ popular: true }, [], (err, popular) => {
             if (err) {
-                res.send("error");
+                res.send("Something went wrong...");;
             }
             else {
                 res.render("start", { popular: popular });
@@ -18,7 +18,7 @@ module.exports = (app, bcrypt) => {
     app.get("/all-products", (req, res) => {
         Product.find({}, [], (err, product) => {
             if (err) {
-                res.send("error");
+                res.send("Something went wrong...");;
             }
             else {
                 res.render("all-products", { product: product });
@@ -30,7 +30,7 @@ module.exports = (app, bcrypt) => {
     app.get("/all-products/hoodies", (req, res) => {
         Product.find({ "name": { $regex: ".*Hoodie.*" } }, [], (err, product) => {
             if (err) {
-                res.send("error");
+                res.send("Something went wrong...");;
             }
             else {
                 res.render("hoodies", { product: product })
@@ -42,7 +42,7 @@ module.exports = (app, bcrypt) => {
     app.get("/all-products/t-shirts", (req, res) => {
         Product.find({ "name": { $regex: ".*T-shirt.*" } }, [], (err, product) => {
             if (err) {
-                res.send(err);
+                res.send("Something went wrong...");;
             }
             else {
                 res.render("t-shirts", { product: product })
@@ -54,7 +54,7 @@ module.exports = (app, bcrypt) => {
     app.get("/product/:id", (req, res) => {
         Product.findById(req.params.id, (err, product) => {
             if (err) {
-                res.send("error");
+                res.send("Something went wrong...");;
             }
             else {
                 res.render("product", { product: product });
@@ -125,12 +125,12 @@ module.exports = (app, bcrypt) => {
     app.get("/admin", validateCookie, (req, res) => {
         Product.find((err, products) => {
             if (err) {
-                res.send(err);
+                res.send("Something went wrong...");;
             }
             else {
                 Order.find((err, orders) => {
                     if (err) {
-                        res.send(err);
+                        res.send("Something went wrong...");;
                     }
                     else {
                         res.render("admin", { products: products, orders: orders });
@@ -144,7 +144,7 @@ module.exports = (app, bcrypt) => {
     app.get("/admin-products", validateCookie, (req, res) => {
         Product.find((err, products) => {
             if (err) {
-                res.send(err);
+                res.send("Something went wrong...");;
             }
             else {
                 res.render("admin-products", { products: products });
@@ -156,12 +156,12 @@ module.exports = (app, bcrypt) => {
     app.get("/admin-orders", validateCookie, (req, res) => {
         Order.find((err, orders) => {
             if (err) {
-                res.send(err);
+                res.send("Something went wrong...");;
             }
             else {
                 Archive.find((err, archive) => {
                     if (err) {
-                        res.send(err);
+                        res.send("Something went wrong...");;
                     }
                     else {
                         res.render("admin-orders", { orders: orders, archive: archive });
@@ -175,7 +175,7 @@ module.exports = (app, bcrypt) => {
     app.get("/update-product/:id", validateCookie, (req, res) => {
         Product.findOne({ _id: req.params.id }, async (err, product) => {
             if (err) {
-                res.send(err);
+                res.send("Something went wrong...");;
             }
             else {
                 await res.render("update-product", { product: product });
