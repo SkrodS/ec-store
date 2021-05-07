@@ -65,6 +65,7 @@
     </div>
 
     <hr class="mb-4 d-none d-sm-block" width="500px">
+    <h1 class="display-5 text-center my-3">Pending orders</h1>
     <% if (orders.length) { %>
         <div class="container">
             <div class="row mx-auto">
@@ -101,11 +102,12 @@
         </div>      
     <% }
     else { %>
-        <h1 class="h2 text-center">No orders yet</h1>
+        <h1 class="h4 text-muted text-center">No orders yet</h1>
     <% }; %>
 
-    <h1 class="display-4 text-center my-3">Archived orders</h1>
+
     <hr class="mb-4 d-none d-sm-block" width="500px">
+    <h1 class="display-5 text-center my-3">Archived orders</h1>
     <% if (archive.length) { %>
         <div class="container">
             <div class="row mx-auto">
@@ -144,7 +146,7 @@
         </div>      
     <% }
     else { %>
-        <h1 class="h2 text-center">No archived orders yet</h1>
+        <h1 class="h4 text-muted text-center">No archived orders yet</h1>
     <% }; %>
     <!-- Footer -->
     <div class="position-sticky text-center my-5" id="archive">
