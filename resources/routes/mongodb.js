@@ -48,6 +48,9 @@ module.exports = (app, mon, bcrypt) => {
 
     Archive = mon.model("Archive", orderSchema);
 
+
+    // FAST CREATES FOLLOWING!
+    
     // Product.create({
     //     name: "Gray EC Hoodie",
     //     description: "A gray hoodie with the original EC logo.",

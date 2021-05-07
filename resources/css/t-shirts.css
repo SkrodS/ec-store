@@ -12,6 +12,11 @@ body {
     color: #deae31;
 }
 
+.gul {
+    background-color: #deae31;
+    border-radius: 0;
+}
+
 .color {
     color: red;
 }

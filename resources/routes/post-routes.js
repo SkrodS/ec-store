@@ -128,16 +128,16 @@ module.exports = (app, cookie, bcrypt) => {
                     };
                 }
                 else {
-                    res.status(403).redirect("sign-in");
+                    res.status(403).redirect("/sign-in");
                 };
             });
         }
         else {
-            res.status(403).redirect("sign-in");
+            res.status(403).redirect("/sign-in");
         };
     };
 
-    //UNARCHIVE ORDER
+    //ARCHIVE ORDER ROUTE
     app.post("/archive-order/:id", validateCookie, (req, res) => {
         Order.findOneAndDelete({ _id: req.params.id }, async (err, order) => {
             if (err) {
@@ -160,6 +160,7 @@ module.exports = (app, cookie, bcrypt) => {
         res.redirect("back");
     });
 
+    //UN-ARCHIVE ORDER ROUTE
     app.post("/un-archive-order/:id", validateCookie, (req, res) => {
         Archive.findOneAndDelete({ _id: req.params.id }, async (err, order) => {
             if (err) {
@@ -181,4 +182,25 @@ module.exports = (app, cookie, bcrypt) => {
         });
         res.redirect("back");
     });
+
+    //CREATE PRODUCT ROUTE
+    app.post("/create-product", validateCookie, async (req, res) => {
+        let checked;
+        
+        if (req.body.popular == "on") {
+            checked = true;
+        }
+        else if (!req.body.popular) {
+            checked = false;
+        };
+
+        await Product.create({
+            name: req.body.name,
+            description: req.body.description,
+            image: req.body.image,
+            popular: checked,
+            price: req.body.price,
+        }); 
+        res.redirect("/admin-products");
+    })
 };

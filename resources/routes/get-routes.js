@@ -90,12 +90,12 @@ module.exports = (app, bcrypt) => {
                     };
                 }
                 else {
-                    res.status(403).redirect("sign-in");
+                    res.status(403).redirect("/sign-in");
                 };
             });
         }
         else {
-            res.status(403).redirect("sign-in");
+            res.status(403).redirect("/sign-in");
         };
     }
     

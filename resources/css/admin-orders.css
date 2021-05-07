@@ -4,6 +4,10 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 #color {
     color: #deae31;
 }
@@ -17,11 +21,11 @@ body {
     color: red;
 }
 
-.gul {
+.text-gul {
     color: #deae31;
 }
 
-.gul:hover {
+.text-gul:hover {
     color: #deae31;
 }
 
@@ -36,6 +40,11 @@ body {
 
 .btn-outline-link:hover {
     background-color: white;
+}
+
+.gul {
+    background-color: #deae31;
+    border-radius: 0;
 }
 
 @media screen and (max-width: 35.9375rem) {

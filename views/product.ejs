@@ -65,13 +65,13 @@
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-5 gul">
-              <li class="breadcrumb-item"><a class="text-dark" href="/">Home</a></li>
-              <li class="breadcrumb-item"><a class="text-dark" href="/all-products">All products</a></li>
-              <% if (product.name.includes("T-shirt")) {%><li class="breadcrumb-item"><a class="text-dark" href="/all-products/t-shirts">T-shirts</a></li><%}%>
-              <% if (product.name.includes("Hoodie")) {%><li class="breadcrumb-item"><a class="text-dark" href="/all-products/hoodies">Hoodies</a></li><%}%>
-              <li class="breadcrumb-item active" aria-current="page"><%= product.name %></li>
+                <li class="breadcrumb-item"><a class="text-dark" href="/">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-dark" href="/all-products">All products</a></li>
+                <% if (product.name.includes("T-shirt")) {%><li class="breadcrumb-item"><a class="text-dark" href="/all-products/t-shirts">T-shirts</a></li><%}%>
+                <% if (product.name.includes("Hoodie")) {%><li class="breadcrumb-item"><a class="text-dark" href="/all-products/hoodies">Hoodies</a></li><%}%>
+                <li class="breadcrumb-item active" aria-current="page"><%= product.name %></li>
             </ol>
-          </nav>
+        </nav>
 
         <!-- Content -->
         <div class="container mx-auto">

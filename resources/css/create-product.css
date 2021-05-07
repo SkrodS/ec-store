@@ -38,6 +38,11 @@ body {
     background-color: white;
 }
 
+.gul {
+    background-color: #deae31;
+    border-radius: 0;
+}
+
 @media screen and (max-width: 35.9375rem) {
     #test {
         margin-bottom: 0.625rem;

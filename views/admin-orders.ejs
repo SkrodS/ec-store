@@ -50,8 +50,20 @@
         </div>
     </nav>
 
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-5 gul">
+            <li class="breadcrumb-item"><a class="text-dark" href="/admin">Overview</a></li>
+            <li class="breadcrumb-item active">Order panel</li>
+        </ol>
+    </nav>
+
     <!-- Content -->
-    <h1 class="display-4 text-center my-3">Order panel</h1>
+    <div class="shadow p-3 mt-4 mb-5 bg-white mx-auto rounded text-center" style="min-width:300px; max-width:30%;">
+        <h1 class="display-4 text-center">Order panel</h1>
+        <a href="#archive" class="btn btn-outline-link"><i class="fas fa-forward"></i> Skip to archive</a>
+    </div>
+
     <hr class="mb-4" width="500px">
     <% if (orders.length) { %>
         <div class="container">
@@ -75,7 +87,7 @@
                                     • <%= item.name %> (<%= item.size %>): <%= item.quantity %>st<br>
                                 <% }); %>
 
-                                <h1 class="h5 font-weight-bold mt-3">Email: <a class="gul" href="mailto:<%= order.email %>"><%= order.email %></a></h1>
+                                <h1 class="h5 font-weight-bold mt-3">Email: <a class="text-gul" href="mailto:<%= order.email %>"><%= order.email %></a></h1>
                                 <hr class="my-3">
                                 <form action="/archive-order/<%= order._id %>" method="post" class="float-left">
                                     <button class="btn btn-light" type="submit"><i class="fas fa-archive"></i> Archive</button>
@@ -116,13 +128,13 @@
                                     • <%= item.name %> (<%= item.size %>): <%= item.quantity %>st<br>
                                 <% }); %>
 
-                                <h1 class="h5 font-weight-bold mt-3">Email: <a class="gul" href="mailto:<%= order.email %>"><%= order.email %></a></h1>
+                                <h1 class="h5 font-weight-bold mt-3">Email: <a class="text-gul" href="mailto:<%= order.email %>"><%= order.email %></a></h1>
                                 <hr class="my-3">
                                 <form action="/un-archive-order/<%= order._id %>" method="post" class="float-left">
                                     <button class="btn btn-light" type="submit"><i class="fas fa-times"></i> Un-archive</button>
                                 </form>
                                 <form action="/delete-order/<%= order._id %>?_method=delete" method="post" class="float-right">
-                                    <button class="btn btn-light" type="submit"><i class="fas fa-trash-alt"></i> Delete</button>
+                                    <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i> Delete</button>
                                 </form>                            </div>
                         </div>
                         </a>
@@ -135,7 +147,7 @@
         <h1 class="h2 text-center">No archived orders yet</h1>
     <% }; %>
     <!-- Footer -->
-    <div class="position-sticky text-center my-5">
+    <div class="position-sticky text-center my-5" id="archive">
       <p>Made by: <a id="color" href="http://www.github.com/SkrodS">Robin Widjeback</a></p>
     </div>
   </body>

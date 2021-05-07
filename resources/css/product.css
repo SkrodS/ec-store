@@ -34,14 +34,11 @@ body {
 
 .gul {
     background-color: #deae31;
+    border-radius: 0;
 }
 
 .color {
     color: red;
-}
-
-.breadcrumb {
-    border-radius: 0;
 }
 
 @media screen and (max-width: 35.9375rem) {

@@ -13,12 +13,12 @@ module.exports = (app, cookie) => {
                     };
                 }
                 else {
-                    res.status(403).redirect("sign-in");
+                    res.status(403).redirect("/sign-in");
                 };
             });
         }
         else {
-            res.status(403).redirect("sign-in");
+            res.status(403).redirect("/sign-in");
         };
     };
     
@@ -26,5 +26,11 @@ module.exports = (app, cookie) => {
     app.delete("/delete-order/:id", validateCookie, async (req, res) => {
         await Archive.remove({ _id: req.params.id });
         res.redirect("/admin-orders");
+    });
+
+    //DELETE PRODUCT ROUTE
+    app.delete("/delete-product/:id", validateCookie, async (req, res) => {
+        await Product.remove({ _id: req.params.id });
+        res.redirect("/admin-products");
     });
 };
