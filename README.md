@@ -1,4 +1,4 @@
-# EC-store
+# EC-Store
 ### My final project of WESWEB01 and WEUWEB01.
 
 ## Dependencies
