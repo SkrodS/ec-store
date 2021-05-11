@@ -6,7 +6,7 @@
 - MongoDB
 
 # Installation and start up
-0. Make sure that Node.js and MongoDB is installed correctly.
+0. Make sure that Node.js and MongoDB are installed correctly.
 1. Clone the repository with:
 ```
 git clone https://github.com/SkrodS/final-project.git
