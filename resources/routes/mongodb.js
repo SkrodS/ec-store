@@ -1,4 +1,4 @@
-module.exports = (mon) => {
+module.exports = (mon, bcrypt) => {
     mon.connect(process.env.DBPATH, { useNewUrlParser: true, useUnifiedTopology: true });
 
     const productSchema = new mon.Schema({
@@ -63,7 +63,7 @@ module.exports = (mon) => {
     //     name: "Red EC Hoodie",
     //     description: "A red hoodie with the original EC logo.",
     //     image: "/img/red.jpg",
-    //     popular: true,
+    //     popular: false,
     //     price: 400,
     // });
 
@@ -92,8 +92,8 @@ module.exports = (mon) => {
     // });
 
     // Admin.create({
-    //     username: "robin",
-    //     password: bcrypt.hashSync("robinadmin", 10),
+    //     username: "admin",
+    //     password: bcrypt.hashSync("admin", 10),
     //     sessionId: null,
     // });
 };

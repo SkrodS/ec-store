@@ -13,4 +13,4 @@ app.use(exp.static("resources"));
 app.use(mo("_method"));
 app.use(cookie());
 
-require("./resources/routes/routes.js")(app, mon, bcrypt, cookie);
+require("./resources/routes/routes.js")(app, mon, bcrypt);
