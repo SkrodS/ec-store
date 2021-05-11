@@ -1,4 +1,4 @@
-module.exports = (app, mon, bcrypt) => {
+module.exports = (mon) => {
     mon.connect(process.env.DBPATH, { useNewUrlParser: true, useUnifiedTopology: true });
 
     const productSchema = new mon.Schema({

@@ -1,4 +1,4 @@
-module.exports = (app, cookie) => {
+module.exports = (app) => {
 
     function validateCookie(req, res, next) {
 

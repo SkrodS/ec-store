@@ -8,10 +8,32 @@ module.exports = (app, mon, bcrypt, cookie) => {
         };
     });
 
+    function validateCookie(req, res, next) {
+
+        if (req.cookies.admin) {
+            Admin.findOne({ sessionId: req.cookies.admin }, (err, admin) => {
+                if (admin) {
+                    if (req.cookies.admin == admin.sessionId) {
+                        next()
+                    }
+                    else {
+                        res.status(403).redirect("/sign-in");
+                    };
+                }
+                else {
+                    res.status(403).redirect("/sign-in");
+                };
+            });
+        }
+        else {
+            res.status(403).redirect("/sign-in");
+        };
+    };
+
     //The routes are called via "./mongodb.js" because they get database models from that file.
-    require("./mongodb.js")(app, mon, bcrypt);
-    require("./get-routes.js")(app, bcrypt);
-    require("./post-routes")(app, cookie, bcrypt);
-    require("./delete-routes")(app, cookie);
-    require("./put-routes")(app, cookie);
+    require("./mongodb.js")(mon);
+    require("./get-routes.js")(app);
+    require("./post-routes")(app, bcrypt);
+    require("./delete-routes")(app);
+    require("./put-routes")(app);
 };

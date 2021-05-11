@@ -1,4 +1,4 @@
-module.exports = (app, cookie, bcrypt) => {
+module.exports = (app, bcrypt) => {
 
     //POST FOR ADDING ITEMS TO SHOPPING bag
     app.post("/product/:id/add-item", (req, res) => {

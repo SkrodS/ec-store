@@ -1,6 +1,6 @@
 const cookieParser = require("cookie-parser");
 
-module.exports = (app, bcrypt) => {
+module.exports = (app) => {
 
     //START PAGE
     app.get("/", (req, res) => {
@@ -97,7 +97,7 @@ module.exports = (app, bcrypt) => {
         else {
             res.status(403).redirect("/sign-in");
         };
-    }
+    };
     
     //SIGN IN PAGE
     app.get("/sign-in", (req, res) => {
