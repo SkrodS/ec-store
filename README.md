@@ -9,7 +9,7 @@
 0. Make sure that Node.js and MongoDB are installed correctly.
 1. Clone the repository with:
 ```
-git clone https://github.com/SkrodS/final-project.git
+git clone https://github.com/SkrodS/ec-store.git
 ```
 2. Install packages with:
 ```
