@@ -1,6 +1,7 @@
 module.exports = (app) => {
 
     //VALIDATE COOKIE FUNCTION
+    //Kollar om giltig cookie finns lagrad i webbläsaren. Om inte så skickas man till inloggningssidan.
     function validateCookie(req, res, next) {
 
         if (req.cookies.admin) {
@@ -24,6 +25,8 @@ module.exports = (app) => {
     };
 
     //UPDATE PRODUCT ROUTE
+    //Updaterar produkten vars ID finns lagrad i URL:n.
+    //Innan denna route körs så valideras cookies.
     app.put("/update-product/:id", validateCookie, async (req, res) => {
         let checked;
         

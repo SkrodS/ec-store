@@ -50,95 +50,94 @@
             </div>
         </nav>
 
-    <!-- Content -->
-    <h1 class="display-4 text-center my-3">Overview</h1>
-    <div class="row mx-auto mt-4">
-        <div class="col col-lg-5">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h1 class="h3">Products<a href="/create-product" class="btn float-right"><i class="fas fa-plus"></i></a></h1>
-                </div>
-                <div class="card-body">
-                    <% if (products.length) { %>
-                        <div class="container">
-                            <div class="row mx-auto">
-                                <% products.forEach(product => { %>
-                                    <div class="col-xl-6">
-                                        <a href="/update-product/<%= product._id %>" class="text-dark">
-                                        <div class="card mb-4">
-                                            <img class="card-img-top" src="<%= product.image %>" alt="">
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-2 font-weight-bold text-dark"><%= product.name %></h5>
-                                                <h4 class="color"><%= product.price %>:-</h4>
-                                                <a href="/update-product/<%= product._id %>" class="btn btn-light"><i class="fas fa-edit"></i> Edit</a>
-                                                <a href="/product/<%= product._id %>" class="btn btn-light"><i class="far fa-eye"></i> View</a>
-                                            </div>
-                                        </div>
-                                        </a>
-                                    </div>
-                                <% }); %>
-                            </div>
-                        </div>
-                    <% }
-                    else { %>
-                        <h1 class="cart-title text-center">No products yet</h1>
-                    <% }; %>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <h1 class="h3">Orders</h1>
-                    <small class="text-muted">Archived orders can be seen under "Order panel".</small>
-                </div>
-                <div class="card-body">
-                    <% if (orders.length) { %>
-                        <div class="container">
-                            <div class="row mx-auto">
-                                <% orders.sort((a, b) => b.date - a.date).forEach(order => { %>
-                                    <div class="col-lg-6">
-                                        <div class="card mb-4">
-                                            <div class="card-body">
-                                                <h1 class="h3 font-weight-bold"><%= order.firstname %> <%= order.lastname %>'s order</h1>
-                                                <small><%= order.date.toLocaleString('se-SE') %></small>
-                                                <hr class="my-3">
-                                                <h1 class="h5 font-weight-bold">Shipping information:</h1>
-                                                <div class="ml-2 mb-3">
-                                                    <%= order.firstname %> <%= order.lastname %><br>
-                                                    <%= order.address %>, <%= order.zipCode %><br>
-                                                    <%= order.city %>, <%= order.country %>
+        <!-- Content -->
+        <h1 class="display-4 text-center my-3">Overview</h1>
+        <div class="row mx-auto mt-4">
+            <div class="col col-lg-5">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h1 class="h3">Products<a href="/create-product" class="btn float-right"><i class="fas fa-plus"></i></a></h1>
+                    </div>
+                    <div class="card-body">
+                        <% if (products.length) { %>
+                            <div class="container">
+                                <div class="row mx-auto">
+                                    <% products.forEach(product => { %>
+                                        <div class="col-xl-6">
+                                            <a href="/update-product/<%= product._id %>" class="text-dark">
+                                                <div class="card mb-4">
+                                                    <img class="card-img-top" src="<%= product.image %>" alt="">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title mb-2 font-weight-bold text-dark"><%= product.name %></h5>
+                                                        <h4 class="color"><%= product.price %>:-</h4>
+                                                        <a href="/update-product/<%= product._id %>" class="btn btn-light"><i class="fas fa-edit"></i> Edit</a>
+                                                        <a href="/product/<%= product._id %>" class="btn btn-light"><i class="far fa-eye"></i> View</a>
+                                                    </div>
                                                 </div>
+                                            </a>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        <% }
+                        else { %>
+                            <h1 class="cart-title text-center">No products yet</h1>
+                        <% }; %>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="h3">Orders</h1>
+                        <small class="text-muted">Archived orders can be seen under "Order panel".</small>
+                    </div>
+                    <div class="card-body">
+                        <% if (orders.length) { %>
+                            <div class="container">
+                                <div class="row mx-auto">
+                                    <% orders.sort((a, b) => b.date - a.date).forEach(order => { %>
+                                        <div class="col-lg-6">
+                                            <div class="card mb-4">
+                                                <div class="card-body">
+                                                    <h1 class="h3 font-weight-bold"><%= order.firstname %> <%= order.lastname %>'s order</h1>
+                                                    <small><%= order.date.toLocaleString('se-SE') %></small>
+                                                    <hr class="my-3">
+                                                    <h1 class="h5 font-weight-bold">Shipping information:</h1>
+                                                    <div class="ml-2 mb-3">
+                                                        <%= order.firstname %> <%= order.lastname %><br>
+                                                        <%= order.address %>, <%= order.zipCode %><br>
+                                                        <%= order.city %>, <%= order.country %>
+                                                    </div>
 
-                                                <h1 class="h5 font-weight-bold">Items:</h1>
-                                                <% order.bagItems.forEach(item => { %>
-                                                    • <%= item.name %> (<%= item.size %>): <%= item.quantity %>st<br>
-                                                <% }); %>
+                                                    <h1 class="h5 font-weight-bold">Items:</h1>
+                                                    <% order.bagItems.forEach(item => { %>
+                                                        • <%= item.name %> (<%= item.size %>): <%= item.quantity %>st<br>
+                                                    <% }); %>
 
-                                                <h1 class="h5 font-weight-bold mt-3">Email: <a class="gul" href="mailto:<%= order.email %>"><%= order.email %></a></h1>
-                                                <hr class="my-3">
-                                                <form action="/archive-order/<%= order._id %>" method="post" class="float-left">
-                                                    <button class="btn btn-light" type="submit"><i class="fas fa-archive"></i> Archive</button>
-                                                </form>
+                                                    <h1 class="h5 font-weight-bold mt-3">Email: <a class="gul" href="mailto:<%= order.email %>"><%= order.email %></a></h1>
+                                                    <hr class="my-3">
+                                                    <form action="/archive-order/<%= order._id %>" method="post" class="float-left">
+                                                        <button class="btn btn-light" type="submit"><i class="fas fa-archive"></i> Archive</button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
-                                        </a>
-                                    </div>
-                                <% }); %>
-                            </div>
-                        </div>      
-                    <% }
-                    else { %>
-                        <h1 class="cart-title text-center">No orders yet</h1>
-                    <% } %>
+                                    <% }); %>
+                                </div>
+                            </div>      
+                        <% }
+                        else { %>
+                            <h1 class="cart-title text-center">No orders yet</h1>
+                        <% } %>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <div class="position-sticky text-center my-5">
-      <p>Made by: <a id="color" href="http://www.github.com/SkrodS">Robin Widjeback</a></p>
-    </div>
-  </body>
+        <!-- Footer -->
+        <div class="position-sticky text-center my-5">
+            <p>Made by: <a id="color" href="http://www.github.com/SkrodS">Robin Widjeback</a></p>
+        </div>
+    </body>
 </html>

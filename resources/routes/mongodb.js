@@ -1,6 +1,7 @@
 module.exports = (mon, bcrypt) => {
     mon.connect(process.env.DBPATH, { useNewUrlParser: true, useUnifiedTopology: true });
 
+    //Skapar ett Schema för produkter.
     const productSchema = new mon.Schema({
         name: String,
         description: String,
@@ -11,6 +12,7 @@ module.exports = (mon, bcrypt) => {
 
     Product = mon.model("Product", productSchema);
 
+    //Skapar ett Schema för adminanvändare.
     const adminSchema = new mon.Schema({
         username: String,
         password: String,
@@ -19,7 +21,7 @@ module.exports = (mon, bcrypt) => {
 
     Admin = mon.model("Admin", adminSchema);
 
-
+    //Skapar ett Schema för orders.
     const orderSchema = new mon.Schema({
         firstname: String,
         lastname: String,
@@ -34,6 +36,7 @@ module.exports = (mon, bcrypt) => {
 
     Order = mon.model("Order", orderSchema);
 
+    //Skapar ett Schecma för arkiverade orders.
     const archiveSchema = new mon.Schema({
         firstname: String,
         lastname: String,
@@ -49,7 +52,7 @@ module.exports = (mon, bcrypt) => {
     Archive = mon.model("Archive", orderSchema);
 
 
-    // FAST CREATES FOLLOWING!
+    // NEDAN FÖLJER CREATES FÖR ALLA STANDARD PRODUKTER!
     
     // Product.create({
     //     name: "Gray EC Hoodie",
