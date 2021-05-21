@@ -49,7 +49,7 @@ module.exports = (mon, bcrypt) => {
         date: Date,
     });
 
-    Archive = mon.model("Archive", orderSchema);
+    Archive = mon.model("Archive", archiveSchema);
 
 
     // NEDAN FÖLJER CREATES FÖR ALLA STANDARD PRODUKTER!
