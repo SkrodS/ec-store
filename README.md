@@ -36,4 +36,4 @@ node index.js
 ```
 10. Done
 ### The website should now be running on "localhost:3000"
-#### To acccess admin page go to "localhost:3000/admin" and log in with `Username: "admin"` och `Password: "admin"`
+#### To acccess admin page go to "localhost:3000/admin" and log in with `Username: "admin"` and `Password: "admin"`
